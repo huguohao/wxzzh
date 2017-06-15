@@ -4,14 +4,14 @@
 import xml.etree.ElementTree as ET
 
 def parse_xml(web_data):
-    if len(web_data)==0:
+    if len(web_data)== 0:
         return None
     xmlData = ET.fromstring(web_data)
     msg_type = xmlData.find('MsgType').text
     if msg_type == 'text':
         return TextMsg(xmlData)
     elif msg_type == 'image':
-        return ImageMsg('xmlData')
+        return ImageMsg(xmlData)
 class Msg(object):
     def __init__(self,xmlData):
         self.ToUserName = xmlData.find('ToUserName').text

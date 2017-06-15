@@ -8,7 +8,8 @@ class Handle(object):
     def POST(self):
         try:
             webData = web.data()
-            print "Handle Post webdata is ", webData   #后台打日志
+            print "Handle Post webdata is "
+            print webData   #后台打日志
             recMsg = receive.parse_xml(webData)
             if recMsg.MsgType == 'text':
                 toUser = recMsg.FromUserName

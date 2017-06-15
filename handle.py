@@ -11,14 +11,14 @@ class Handle(object):
             print "Handle Post webdata is "
             print webData   #后台打日志
             recMsg = receive.parse_xml(webData)
+            toUser = recMsg.FromUserName
+            fromUser = recMsg.ToUserName
             if recMsg.MsgType == 'text':
-                toUser = recMsg.FromUserName
-                fromUser = recMsg.ToUserName
                 content = recMsg.Content
                 replyMsg = reply.TextMsg(toUser, fromUser, content)
                 return replyMsg.send()
             if recMsg.MsgType == 'image':
-                ImageId = recMsg.MediaId
+                mediaId = recMsg.MediaId
                 replyMsg = reply.ImageMsg(toUser,fromUser,mediaId)
                 return replyMsg.send()
             else:

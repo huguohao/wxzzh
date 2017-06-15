@@ -18,12 +18,10 @@ class Handle(object):
                 replyMsg = reply.TextMsg(toUser, fromUser, content)
                 return replyMsg.send()
             if recMsg.MsgType == 'image':
-                toUser = recMsg.FromUserName
-                fromUser = recMsg.ToUserName
+                ImageId = recMsg.MediaId
                 replyMsg = reply.ImageMsg(toUser,fromUser,mediaId)
                 return replyMsg.send()
             else:
-                print "暂且不处理"
-                return "success"
+                return reply.Msg.send()
         except Exception, Argment:
             return Argment

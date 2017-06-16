@@ -4,7 +4,7 @@ import hashlib
 import web
 import reply
 import receive
-import meun
+import config
 class Handle(object):
     def POST(self):
         try:
@@ -31,5 +31,5 @@ class Handle(object):
             return Argment
 
     def Meun(self):
-        return meun.CreateMeun()
+        return config.CreateMeun()
 

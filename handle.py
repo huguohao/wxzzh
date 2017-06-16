@@ -4,6 +4,7 @@ import hashlib
 import web
 import reply
 import receive
+import meun
 class Handle(object):
     def POST(self):
         try:
@@ -15,7 +16,10 @@ class Handle(object):
             fromUser = recMsg.ToUserName
             if recMsg.MsgType == 'text':
                 content = recMsg.Content
-                replyMsg = reply.TextMsg(toUser, fromUser, content)
+                if content == u"天气":
+                    replyMsg = "多云"
+                else:
+                    replyMsg = reply.TextMsg(toUser, fromUser, content)
                 return replyMsg.send()
             if recMsg.MsgType == 'image':
                 mediaId = recMsg.MediaId
@@ -25,3 +29,7 @@ class Handle(object):
                 return reply.Msg.send()
         except Exception, Argment:
             return Argment
+
+    def Meun(self):
+        return meun.CreateMeun()
+
